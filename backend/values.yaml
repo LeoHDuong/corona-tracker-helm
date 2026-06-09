@@ -1,0 +1,57 @@
+replicaCount: 1
+
+image:
+  repository: harbor/corona-tracker/backend
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: harbor-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+ingress:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+livenessProbe:
+  httpGet:
+    path: /api/health
+    port: 8080
+
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: 8080
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
