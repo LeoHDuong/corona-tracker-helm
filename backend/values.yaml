@@ -79,5 +79,4 @@ mongodb:
       memory: 256Mi
 
 env:
-  SPRING_DATA_MONGODB_HOST: "backend-mongodb"
-  SPRING_DATA_MONGODB_PORT: "27017"
+  SPRING_DATA_MONGODB_URI: "mongodb://backend-mongodb:27017/coronatracker"
