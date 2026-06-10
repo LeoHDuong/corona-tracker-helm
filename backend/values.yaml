@@ -70,6 +70,8 @@ mongodb:
     port: 27017
   service:
     port: 27017
+  image:
+    tag: "latest"
   resources:
     limits:
       cpu: 500m
