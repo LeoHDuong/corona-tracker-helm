@@ -21,9 +21,10 @@ podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 8080
   targetPort: 8080
+  nodePort: 30001
 
 ingress:
   enabled: false
